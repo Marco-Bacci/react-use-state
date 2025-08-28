@@ -1,6 +1,6 @@
 import languages from '../data/languages'
 
-const Card = () => {
+const Cards = () => {
   return (
     <>
       {languages.map((language) => {
@@ -16,4 +16,4 @@ const Card = () => {
   );
 };
 
-export default Card;
+export default Cards;
