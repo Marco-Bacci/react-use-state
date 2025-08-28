@@ -1,3 +1,4 @@
+import { useState } from 'react'
 const languages = [
   {
     id: 1,
@@ -41,9 +42,9 @@ const Languages = () => {
   return (
     <>
       {languages.map((language) => {
-        const { id, title, description } = language;
+        const { id, title } = language;
         return (
-          <button type="button" class="btn btn-primary m-2">
+          <button key={id} type="button" className="btn btn-primary m-2">
             {title}
           </button>
         );
