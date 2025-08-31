@@ -1,7 +1,10 @@
 import { useState } from "react";
 import languages from "../data/languages";
+import Card from "./Card";
+
 const Main = () => {
-  const [selected, setSelected] = useState(languages[0]);
+  const [selected, setSelected] = useState(null);
+
   return (
     <>
       <h1 className="mb-5">Learn Web development</h1>
@@ -9,15 +12,22 @@ const Main = () => {
         {languages.map((language) => {
           const { id, title } = language;
           return (
-            <button key={id} type="button" className="btn btn-primary m-2"onClick={()=> setSelected(language)} >
+            <button
+              key={id}
+              type="button"
+              onClick={() => setSelected(language)}
+              className={`btn m-2 ${
+                selected != null && language.id === selected.id
+                  ? "btn-warning"
+                  : "btn-primary"
+              }`}
+            >
               {title}
             </button>
           );
         })}
-        <div className="card mt-4 p-2">
-          <div className="title fw-bold">{selected.title}</div>
-          <div className="description">{selected.description}</div>
-        </div>
+
+        <Card language = {selected}/>
       </div>
     </>
   );
